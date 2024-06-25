@@ -1,0 +1,26 @@
+{
+  "name": "cinema-pj",
+  "version": "1.0.0",
+  "description": "Just a small cinema project build with Express",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "watch": "nodemon app.js --experimental-modules",
+    "prettier": "prettier --write \"src/**/*.ts\"",
+    "prettier:check": "prettier --check \"src/**/*.ts\"",
+    "test": "jest"
+  },
+  "author": "Phi",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
