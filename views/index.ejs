@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello</title>
-  </head>
-  <body>
-    <h3>Hello <%= name %>!</h3>
-    <pre><%= date %></pre>
-  </body>
-</html>
+<%- include('./partials/header.ejs') %>
+<!-- prettier-ignore -->
+<%# All values assign to locals %>
+    <%# locals = {} %>
+    <% if (locals.user) { %>
+<h2>Hello, <%= user.name %>!</h2>
+<% } else { %>
+<h2>Hello, Guest!</h2>
+<% } %>
+<pre><%= date %></pre>
+<ul>
+  <% items.forEach(i => { %>
+  <li><%= i %></li>
+  <% }) %>
+</ul>
+<%- include('./partials/footer.ejs') %>

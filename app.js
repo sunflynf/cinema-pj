@@ -9,6 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT;
 const app = express();
 
+app.use(express.static('public'));
 // setup for get req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -21,13 +22,13 @@ app.use(morgan('tiny'));
 // });
 
 app.get('', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+  // res.sendFile(__dirname + '/public/index.html');
   //   res.send('Hello my fen!');
-});
-
-app.get('/hello', (req, res) => {
   res.render('index.ejs', {
-    name: req.query['name'],
+    title: 'Well done!',
+    // user: undefined,
+    // user: { name: 'Fi' },
+    items: ['apple', 'banana', 'dragon fruit', 'mango', 'orange'],
     date: new Date().toLocaleDateString(),
   });
 });
