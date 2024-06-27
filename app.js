@@ -43,8 +43,18 @@ app.post('/send', (req, res) => {
 
 // REST
 app.get('/endpoint', (req, res) => {
-  res.status(200);
-  res.json({ hello: "it's me" });
+  const info = {
+    status: 'ok',
+    data: [
+      { value: 1, label: 'Football' },
+      { value: 2, label: 'Futball' },
+      { value: 3, label: 'Soccer' },
+      { value: 4, label: 'Bóng đá' },
+    ],
+    rate: 3,
+  };
+
+  res.status(200).json(info);
 });
 
 app.listen(PORT, () => {
