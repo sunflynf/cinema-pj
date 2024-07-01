@@ -5,6 +5,8 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
 
+import db from './db/database.js';
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT;
 const app = express();
@@ -59,4 +61,15 @@ app.get('/endpoint', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
+});
+
+// Graceful shutdown
+process.on('SIGINT', () => {
+  db.close((err) => {
+    if (err) {
+      console.error(err.message);
+    }
+    console.log('Closed the database connection.');
+    process.exit(0);
+  });
 });
